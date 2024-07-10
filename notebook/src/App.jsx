@@ -25,23 +25,40 @@ function App() {
   }
 
   function handleEditTodo(index) {
-    const valueToBeEdited = todos[index];
-    setTodoValue(valueToBeEdited);
-    handleDeleteTodo(index);
+    const valueToBeEdited = todos[index]
+    setTodoValue(valueToBeEdited)
+    handleDeleteTodo(index)
   }
 
   useEffect(() => {
-    const localTodos = localStorage.getItem('todos');
-    if (localTodos) {
-      setTodos(JSON.parse(localTodos));
+    if (!localStorage) {
+      return
     }
-  }, []);
+
+    let localTodos = localStorage.getItem('todos')
+    if (!localTodos) {
+      return
+    }
+
+    console.log(localTodos)
+    localTodos = JSON.parse(localTodos).todos
+    setTodos(localTodos)
+
+  }, [])
+
+  // useEffect(() => {
+  //   const localTodos = localStorage.getItem('todos');
+  //   if (localTodos) {
+  //     setTodos(JSON.parse(localTodos));
+  //   }
+  // }, []);
 
   return (
     <>
       <TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodos={handleAddTodos} />
-      <TodoList todos={todos} handleEditTodo={handleEditTodo} handleDeleteTodo={handleDeleteTodo} />
+      <TodoList handleEditTodo={handleEditTodo} handleDeleteTodo={handleDeleteTodo} todos={todos} />
     </>
+
   );
 }
 

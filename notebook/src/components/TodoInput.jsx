@@ -4,7 +4,7 @@ function TodoInput (props) {
     const {handleAddTodos, todoValue, setTodoValue} = props
     
     return (
-        <header>
+        <header  >
             <input value={todoValue} onChange={(e) => {setTodoValue(e.target.value)}} placeholder="Add note ..." />
             <button onClick={() => {
                 handleAddTodos(todoValue)

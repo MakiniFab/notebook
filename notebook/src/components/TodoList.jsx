@@ -5,15 +5,17 @@ function TodoList (props) {
     const {todos} = props
 
     return (
-        <ul className="main" >
-           {todos.map((todo, todoIndex) => {
-                return (
-                    <TodoCard {...props} key={todoIndex} index={todoIndex}>
-                        <p>{todo}</p>
-                    </TodoCard>
-                )
-           })}
-        </ul>
+        <div className="todoList-container" >
+            <ul className="todoList-list" >
+            {todos.map((todo, todoIndex) => {
+                    return (
+                        <TodoCard {...props} key={todoIndex} index={todoIndex}>
+                            <p>{todo}</p>
+                        </TodoCard>
+                    )
+            })}
+            </ul>
+        </div>
     )
 }
 
