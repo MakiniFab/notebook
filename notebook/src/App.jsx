@@ -1,65 +1,69 @@
-import { useState, useEffect } from 'react'
-import TodoInput from './components/TodoInput'
-import TodoList from './components/TodoList'
+import { useState, useEffect } from 'react';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [todoValue, setTodoValue] = useState("");
+  const [todoValue, setTodoValue] = useState({ title: "", body: "", importance: 0 });
+  const [editingIndex, setEditingIndex] = useState(null);
 
   function persistData(newList) {
-    localStorage.setItem('todos', JSON.stringify({todos: newList}));
+    localStorage.setItem('todos', JSON.stringify({ todos: newList }));
   }
 
   function handleAddTodos(newTodo) {
-    const newTodoList = [...todos, newTodo];
+    const newTodoList = editingIndex !== null
+        ? todos.map((todo, index) => index === editingIndex ? newTodo : todo)
+        : [...todos, newTodo];
+
     persistData(newTodoList);
     setTodos(newTodoList);
+    if (editingIndex !== null) {
+        resetEditing(); 
+    }
   }
 
   function handleDeleteTodo(index) {
-    const newTodoList = todos.filter((todo, todoIndex) => {
-      return todoIndex !== index
-    })
+    const newTodoList = todos.filter((_, todoIndex) => todoIndex !== index);
     persistData(newTodoList);
     setTodos(newTodoList);
   }
 
   function handleEditTodo(index) {
-    const valueToBeEdited = todos[index]
-    setTodoValue(valueToBeEdited)
-    handleDeleteTodo(index)
+    const todoToEdit = todos[index];
+    setTodoValue(todoToEdit); 
+    setEditingIndex(index); 
+  }
+
+  function resetEditing() {
+    setEditingIndex(null);
+    setTodoValue({ title: "", body: "", importance: 0 }); 
   }
 
   useEffect(() => {
-    if (!localStorage) {
-      return
-    }
+    if (!localStorage) return;
 
-    let localTodos = localStorage.getItem('todos')
-    if (!localTodos) {
-      return
-    }
+    let localTodos = localStorage.getItem('todos');
+    if (!localTodos) return;
 
-    console.log(localTodos)
-    localTodos = JSON.parse(localTodos).todos
-    setTodos(localTodos)
-
-  }, [])
-
-  // useEffect(() => {
-  //   const localTodos = localStorage.getItem('todos');
-  //   if (localTodos) {
-  //     setTodos(JSON.parse(localTodos));
-  //   }
-  // }, []);
+    localTodos = JSON.parse(localTodos).todos;
+    setTodos(localTodos);
+  }, []);
 
   return (
     <>
-      <TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodos={handleAddTodos} />
-      <TodoList handleEditTodo={handleEditTodo} handleDeleteTodo={handleDeleteTodo} todos={todos} />
+      <TodoInput
+        todoValue={todoValue}
+        setTodoValue={setTodoValue}
+        handleAddTodos={handleAddTodos}
+      />
+      <TodoList
+        handleEditTodo={handleEditTodo}
+        handleDeleteTodo={handleDeleteTodo}
+        todos={todos}
+      />
     </>
-
   );
 }
 
-export default App
+export default App;

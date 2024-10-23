@@ -1,0 +1,74 @@
+.input-div {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-div-add-svg,
+.input-div-close-svg {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.input-div-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-div-txt {
+    flex: 2;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+}
+
+.input-div-stars {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.input-div-span {
+    font-size: 24px;
+    margin-right: 5px;
+    transition: color 0.2s ease;
+}
+
+.input-div-btn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.input-div-btn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .input-div {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-div-input,
+    .input-div-txt,
+    .input-div-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
