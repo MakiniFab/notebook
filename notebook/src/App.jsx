@@ -6,6 +6,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [todoValue, setTodoValue] = useState({ title: "", body: "", importance: 0 });
   const [editingIndex, setEditingIndex] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   function persistData(newList) {
     localStorage.setItem('todos', JSON.stringify({ todos: newList }));
@@ -31,7 +32,8 @@ function App() {
 
   function handleEditTodo(index) {
     const todoToEdit = todos[index];
-    setTodoValue(todoToEdit); 
+    setTodoValue(todoToEdit);
+    setIsEditing(true)
     setEditingIndex(index); 
   }
 
@@ -56,6 +58,8 @@ function App() {
         todoValue={todoValue}
         setTodoValue={setTodoValue}
         handleAddTodos={handleAddTodos}
+        setIsEditing={setIsEditing}
+        isEditing={isEditing}
       />
       <TodoList
         handleEditTodo={handleEditTodo}

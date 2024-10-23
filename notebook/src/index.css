@@ -1,0 +1,8 @@
+body {
+    background: rgb(255, 0, 212);
+}
+
+#root {
+    position: relative;
+    width: 100%;
+}

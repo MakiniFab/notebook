@@ -2,15 +2,24 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: black;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .input-div-add-svg,
 .input-div-close-svg {
     margin-right: 10px;
     cursor: pointer;
+    position: relative;
+    top: 15px;
+    left: 10px;
+    fill: white;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
 }
 
 .input-div-input {
@@ -19,7 +28,8 @@
     margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 20px;
+    color: black;
 }
 
 .input-div-txt {
@@ -59,16 +69,72 @@
     background-color: #0056b3;
 }
 
+.input-div-span-txt {
+    position: relative;
+    left: 25%;
+    bottom: 20px;
+    color:  #3cff00;
+    font-size: 32px;
+}
+
 @media (max-width: 600px) {
     .input-div {
         flex-direction: column;
         align-items: stretch;
+        width: 88%;
     }
 
-    .input-div-input,
-    .input-div-txt,
+    .input-div-input {
+        width: 70%;
+        margin-bottom: 10px;
+        position: relative;
+        top: -20px;
+        right: -20%;
+    }
+    .input-div-txt {
+        width: 100%;
+        margin-bottom: 10px;
+        position: relative;
+        top: 0px;
+        left: 0%;
+        width: 90%;
+    }
     .input-div-btn {
         width: 100%;
         margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .input-div {
+        flex-direction: column;
+        align-items: stretch;
+        width: 83%;
+    }
+    .input-div-add-svg,
+    .input-div-close-svg {
+    top: 0px;
+    left: 20px;
+    width: 25px;
+    fill: red;
+    height: 25px;
+    }
+    .input-div-span-txt {
+        left: 12%;
+        bottom: 46px;
+        font-size: 40px;
+    
+    }
+    .input-div-input {
+        position: relative;
+        top: -45px;
+        left: 15%;
+        width: 70%;
+    }
+    .input-div-btn {
+        width: 23%;
+    }
+    .input-div-span {
+        font-size: 55px;
     }
 }

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./TodoInput.css";
 
 function TodoInput(props) {
-    const { handleAddTodos, todoValue, setTodoValue } = props;
-    const [isEditing, setIsEditing] = useState(false);
+    const { handleAddTodos, todoValue, setTodoValue, setIsEditing, isEditing } = props;
+    
 
     const handleAddClick = () => {
         handleAddTodos(todoValue);
@@ -30,7 +30,7 @@ function TodoInput(props) {
                     >
                         <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                     </svg>
-                    <span>Add New Note</span>
+                    <span className="input-div-span-txt" >Add New Note</span>
                 </>
             ) : (
                 <>
