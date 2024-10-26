@@ -1,6 +1,6 @@
 import React from "react";
 import TodoCard from "./TodoCard";
-import "./TodoList.css"
+import "./TodoList.css";
 
 function TodoList(props) {
     const { todos } = props;
@@ -10,7 +10,7 @@ function TodoList(props) {
             <ul className="todoList-list">
                 {todos.map((todo, todoIndex) => {
                     return (
-                        <TodoCard {...props} key={todoIndex} index={todoIndex}>
+                        <TodoCard {...props} key={todoIndex} index={todoIndex} creationDate={todo.creationDate}>
                             <h3>{todo.title}</h3>
                             <p>{todo.body}</p>
                             <p>Importance: {'★'.repeat(todo.importance)}{'☆'.repeat(3 - todo.importance)}</p>

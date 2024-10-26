@@ -1,0 +1,57 @@
+.quote-container {
+    position: absolute;
+    top: 127%;
+    left: 5px;
+    z-index: 10;
+    background: white;
+    width: 93%;
+    border-radius: 5px;
+    border: 5px solid purple;
+    font-size: 25px;
+}
+
+.loader {
+    width: fit-content;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    background: radial-gradient(circle closest-side, #000 94%, #0000) right / calc(200% - 1em) 100%;
+    animation: l24 1s infinite alternate linear;
+    position: absolute;
+    top: 300%;
+    left: 15%;
+    z-index: 10;
+}
+
+  .loader::before {
+    content: "Loading...";
+    line-height: 1em;
+    color: #0000;
+    background: inherit;
+    background-image: radial-gradient(circle closest-side,#fff 94%,#000);
+    -webkit-background-clip:text;
+            background-clip:text;
+  }
+
+  
+  @keyframes l24{
+    100%{background-position: left}
+  }
+
+.loader1 {
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+    background: 
+      var(--_g) 0%   50%,
+      var(--_g) 50%  50%,
+      var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+      20%{background-position:0%   0%, 50%  50%,100%  50%}
+      40%{background-position:0% 100%, 50%   0%,100%  50%}
+      60%{background-position:0%  50%, 50% 100%,100%   0%}
+      80%{background-position:0%  50%, 50%  50%,100% 100%}
+  }

@@ -34,3 +34,8 @@ button:focus {
     outline: none;
     box-shadow: 0 0 3px rgba(0, 0, 255, 0.5);
 }
+
+#quote {
+    font-family: system-ui;
+    color: black;
+}

@@ -25,6 +25,7 @@
     margin: 5px 0;
     font-size: 14px;
     color: gray;
+    font-style: italic;
 }
 
 .todoList-list p:last-of-type {
